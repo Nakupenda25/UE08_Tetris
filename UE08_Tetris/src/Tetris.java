@@ -1,26 +1,20 @@
 public class Tetris {
 
-    public static String[][] rowsToColums(String[][] rotArr){
-        int length = rotArr.length;
+    public static String[][] rowsToColumns(String[][] rotArr1){
+        int length = rotArr1.length;
 
-        for (String[] number: rotArr) {
-            for (String element: number) {
-                System.out.print(" " + element + " ");
-            }
-            System.out.println();
-        }
-        System.out.println();
-        System.out.println();
-
+        //goes through each row and turns it into a column and vice versa
         for (int row = 0; row < length; row++){
             for (int column = row; column < length; column++){
 
-                String newRow = rotArr[row][column];
-                rotArr [row][column] = rotArr [column][row];
-                rotArr [column][row] = newRow;
+                //uses the String newRow to save the value of rotArr at a specific spot
+                String newRow = rotArr1[row][column];
+                //swaps the position of row/column with column/row to use in further steps
+                rotArr1 [row][column] = rotArr1 [column][row];
+                rotArr1 [column][row] = newRow;
             }
         }
-        return rotArr;
+        return rotArr1;
     }
 
     public static String[][] reverseArray(String[][] rotArr){
@@ -38,6 +32,8 @@ public class Tetris {
     }
 
     public static String[][] rotateArray(String[][] rotArr){
+        rotArr = rowsToColumns(rotArr);
+        rotArr = reverseArray(rotArr);
         return rotArr;
     }
 
@@ -65,15 +61,11 @@ public class Tetris {
                 {"-", "-", "o", "-"},
                 {"-", "-", "o" ,"-"}};
 
-        rotArr1 = rowsToColums(rotArr1);
-        rotArr1 = reverseArray(rotArr1);
+        rotArr1 = rotateArray(rotArr1);
+        rotArr2 = rotateArray(rotArr2);
+        rotArr3 = rotateArray(rotArr3);
+        rotArr4 = rotateArray(rotArr4);
 
-        for (String[] number: rotArr1) {
-            for (String element: number) {
-                System.out.print(" " + element + " ");
-            }
-            System.out.println();
-        }
     }
 }
 
