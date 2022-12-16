@@ -61,11 +61,31 @@ public class Tetris {
                 {"-", "-", "o", "-"},
                 {"-", "-", "o" ,"-"}};
 
-        rotArr1 = rotateArray(rotArr1);
-        rotArr2 = rotateArray(rotArr2);
-        rotArr3 = rotateArray(rotArr3);
-        rotArr4 = rotateArray(rotArr4);
+        String[][][] mainArray = {rotArr1, rotArr2, rotArr3, rotArr4};
 
+        int formatCounter = 0;
+
+        for (int counter = 0; counter <= mainArray.length; counter++) {
+            for (int r = 0; r < rotArr1.length; r++) {
+                for (String[][] arrays : mainArray) {
+                    for (int c = 0; c < rotArr1[1].length; c++) {
+                        if (formatCounter != 3) {
+                            System.out.print(arrays[r][c] + " ");
+                            formatCounter++;
+                        } else {
+                            System.out.print(arrays[r][c] + "  ");
+                            formatCounter = 0;
+                        }
+                    }
+                }
+                System.out.println();
+            }
+            rotArr1 = rotateArray(rotArr1);
+            rotArr2 = rotateArray(rotArr2);
+            rotArr3 = rotateArray(rotArr3);
+            rotArr4 = rotateArray(rotArr4);
+            System.out.println();
+        }
     }
 }
 
