@@ -1,3 +1,10 @@
+/*
+ * Tetris
+ * Turns 4 fixed array matrixes clockwise and prints them out after each rotation
+ * Author: Benedikt Schmatz
+ * Last Change: 29.12.22
+ */
+
 public class Tetris {
 
     public static String[][] rowsToColumns(String[][] rotArr1){
